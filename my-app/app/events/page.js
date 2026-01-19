@@ -1,15 +1,16 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import panelsData from '@/data/panels.json';
 import { Orbitron,Pixelify_Sans } from 'next/font/google';
+import EventModal from '@/components/EventModal';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const pixelify = Pixelify_Sans({ subsets: ['latin'], weight: '400' });
 
 const EventsPage = () => {
   const panels = panelsData.panels;
+  const [selectedPanel, setSelectedPanel] = useState(null);
   
   // Create layout pattern: 3, 2, 3, 2
   const getCardLayout = (index) => {
@@ -19,6 +20,7 @@ const EventsPage = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen w-full" style={{backgroundImage: "url('/bg.png')" , backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="max-w-7xl mx-auto">
         {/* Title */}
@@ -29,10 +31,10 @@ const EventsPage = () => {
         {/* Panels Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
           {panels.map((panel, index) => (
-            <Link
-              href={`/events/${panel.id}`}
+            <div
               key={panel.id}
-              className={`${getCardLayout(index)} group`}
+              className={`${getCardLayout(index)} group cursor-pointer`}
+              onClick={() => setSelectedPanel(panel)}
             >
               <div className="relative overflow-hidden rounded-xl transition-all duration-300 h-full">
                 {/* Image Container */}
@@ -56,11 +58,17 @@ const EventsPage = () => {
 
                 {/* Hover Effect Overlay */}
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
     </div>
+    
+    {/* Event Modal */}
+    {selectedPanel && (
+      <EventModal panel={selectedPanel} onClose={() => setSelectedPanel(null)} />
+    )}
+    </>
   );
 };
 

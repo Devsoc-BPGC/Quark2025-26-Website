@@ -4,6 +4,7 @@
       "id": "roboficial",
       "name": "Roboficial",
       "imageUrl": "/roboficial.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Robowars",
@@ -35,6 +36,7 @@
       "id": "dbf",
       "name": "DBF",
       "imageUrl": "/dbf.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Burnout",
@@ -62,6 +64,7 @@
       "id": "elixir",
       "name": "Elixir",
       "imageUrl": "/elixier.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "QnQ",
@@ -81,6 +84,7 @@
       "id": "corporate",
       "name": "Corporate",
       "imageUrl": "/corporate.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Regalia",
@@ -128,6 +132,7 @@
       "id": "matka",
       "name": "Matka",
       "imageUrl": "/matka.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Valo",
@@ -147,6 +152,7 @@
       "id": "electrify",
       "name": "Electrify",
       "imageUrl": "/electrify.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Digilogica",
@@ -170,6 +176,7 @@
       "id": "programmer-inc",
       "name": "Programmer's Inc.",
       "imageUrl": "/programmer-inc.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "BITS CTF",
@@ -197,6 +204,7 @@
       "id": "school-bag",
       "name": "School Bag",
       "imageUrl": "/school-bag.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Enigmatica",
@@ -224,6 +232,7 @@
       "id": "panel-alpha",
       "name": "Panel Alpha",
       "imageUrl": "/panel-alpha.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Poster Presentation",
@@ -243,6 +252,7 @@
       "id": "informals",
       "name": "Informals",
       "imageUrl": "/informals.png",
+      "robotImageUrl": "/events-robot.png",
       "events": [
         {
           "name": "Karela Pippette",
