@@ -1,0 +1,288 @@
+{
+  "panels": [
+    {
+      "id": "roboficial",
+      "name": "Roboficial",
+      "imageUrl": "/roboficial.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Robowars",
+          "imageUrl": "/events/robowars.png"
+        },
+        {
+          "name": "Roboclench",
+          "imageUrl": "/events/roboclench.png"
+        },
+        {
+          "name": "Robosoccer",
+          "imageUrl": "/events/robosoccer.png"
+        },
+        {
+          "name": "Robosumo",
+          "imageUrl": "/events/robosumo.png"
+        },
+        {
+          "name": "Robo race",
+          "imageUrl": "/events/robo-race.png"
+        },
+        {
+          "name": "LFR",
+          "imageUrl": "/events/lfr.png"
+        }
+      ]
+    },
+    {
+      "id": "dbf",
+      "name": "DBF",
+      "imageUrl": "/dbf.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Burnout",
+          "imageUrl": "/events/burnout.png"
+        },
+        {
+          "name": "Search N Rescue",
+          "imageUrl": "/events/search-n-rescue.png"
+        },
+        {
+          "name": "Trailblazers",
+          "imageUrl": "/events/trailblazers.png"
+        },
+        {
+          "name": "Drone Race",
+          "imageUrl": "/events/drone-race.png"
+        },
+        {
+          "name": "Event XYZ (SEDS)",
+          "imageUrl": "/events/event-xyz.png"
+        }
+      ]
+    },
+    {
+      "id": "elixir",
+      "name": "Elixir",
+      "imageUrl": "/elixier.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "QnQ",
+          "imageUrl": "/events/qnq.png"
+        },
+        {
+          "name": "Ganimatoonic s",
+          "imageUrl": "/events/ganimatoonic.png"
+        },
+        {
+          "name": "Quiz ABC",
+          "imageUrl": "/events/quiz-abc.png"
+        }
+      ]
+    },
+    {
+      "id": "corporate",
+      "name": "Corporate",
+      "imageUrl": "/corporate.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Regalia",
+          "imageUrl": "/events/regalia.png"
+        },
+        {
+          "name": "Bullion Beatdown",
+          "imageUrl": "/events/bullion-beatdown.png"
+        },
+        {
+          "name": "Case Crackdown",
+          "imageUrl": "/events/case-crackdown.png"
+        },
+        {
+          "name": "Marketing Mayhem",
+          "imageUrl": "/events/marketing-mayhem.png"
+        },
+        {
+          "name": "Fix the product",
+          "imageUrl": "/events/fix-the-product.png"
+        },
+        {
+          "name": "Social Condundrum",
+          "imageUrl": "/events/social-condundrum.png"
+        },
+        {
+          "name": "Case Achemy",
+          "imageUrl": "/events/case-achemy.png"
+        },
+        {
+          "name": "Deal Dynamics",
+          "imageUrl": "/events/deal-dynamics.png"
+        },
+        {
+          "name": "Event GHI (BGCC)",
+          "imageUrl": "/events/event-ghi.png"
+        },
+        {
+          "name": "Event PQR (DWDG)",
+          "imageUrl": "/events/event-pqr.png"
+        }
+      ]
+    },
+    {
+      "id": "matka",
+      "name": "Matka",
+      "imageUrl": "/matka.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Valo",
+          "imageUrl": "/events/valo.png"
+        },
+        {
+          "name": "BGMI",
+          "imageUrl": "/events/bgmi.png"
+        },
+        {
+          "name": "FIFA",
+          "imageUrl": "/events/fifa.png"
+        }
+      ]
+    },
+    {
+      "id": "electrify",
+      "name": "Electrify",
+      "imageUrl": "/electrify.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Digilogica",
+          "imageUrl": "/events/digilogica.png"
+        },
+        {
+          "name": "uC Mania",
+          "imageUrl": "/events/uc-mania.png"
+        },
+        {
+          "name": "MatMania",
+          "imageUrl": "/events/matmania.png"
+        },
+        {
+          "name": "Embition",
+          "imageUrl": "/events/embition.png"
+        }
+      ]
+    },
+    {
+      "id": "programmer-inc",
+      "name": "Programmer's Inc.",
+      "imageUrl": "/programmer-inc.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "BITS CTF",
+          "imageUrl": "/events/bits-ctf.png"
+        },
+        {
+          "name": "CodeJam",
+          "imageUrl": "/events/codejam.png"
+        },
+        {
+          "name": "Fool's Coding/ Bug Smash",
+          "imageUrl": "/events/fools-coding.png"
+        },
+        {
+          "name": "Code Alchemy",
+          "imageUrl": "/events/code-alchemy.png"
+        },
+        {
+          "name": "Hackathon",
+          "imageUrl": "/events/hackathon.png"
+        }
+      ]
+    },
+    {
+      "id": "school-bag",
+      "name": "School Bag",
+      "imageUrl": "/school-bag.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Enigmatica",
+          "imageUrl": "/events/enigmatica.png"
+        },
+        {
+          "name": "Quiz",
+          "imageUrl": "/events/quiz.png"
+        },
+        {
+          "name": "Debate",
+          "imageUrl": "/events/debate.png"
+        },
+        {
+          "name": "Open Showcase",
+          "imageUrl": "/events/open-showcase.png"
+        },
+        {
+          "name": "Workshop",
+          "imageUrl": "/events/workshop.png"
+        }
+      ]
+    },
+    {
+      "id": "panel-alpha",
+      "name": "Panel Alpha",
+      "imageUrl": "/panel-alpha.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Poster Presentation",
+          "imageUrl": "/events/poster-presentation.png"
+        },
+        {
+          "name": "Contention",
+          "imageUrl": "/events/contention.png"
+        },
+        {
+          "name": "Cubix",
+          "imageUrl": "/events/cubix.png"
+        }
+      ]
+    },
+    {
+      "id": "informals",
+      "name": "Informals",
+      "imageUrl": "/informals.png",
+      "robotImageUrl": "/events-robot.png",
+      "events": [
+        {
+          "name": "Karela Pippette",
+          "imageUrl": "/events/karela-pippette.png"
+        },
+        {
+          "name": "Karela coding",
+          "imageUrl": "/events/karela-coding.png"
+        },
+        {
+          "name": "Egg Drop",
+          "imageUrl": "/events/egg-drop.png"
+        },
+        {
+          "name": "Geo Guesser",
+          "imageUrl": "/events/geo-guesser.png"
+        },
+        {
+          "name": "ODE to Joy / Proof Hunt",
+          "imageUrl": "/events/ode-to-joy.png"
+        },
+        {
+          "name": "CAD Event/ Building stability event",
+          "imageUrl": "/events/cad-event.png"
+        },
+        {
+          "name": "Integration Bee",
+          "imageUrl": "/events/integration-bee.png"
+        }
+      ]
+    }
+  ]
+}
