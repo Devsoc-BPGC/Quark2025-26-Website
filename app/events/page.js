@@ -21,6 +21,9 @@ const EventsPage = () => {
 
   return (
     <>
+    <br></br>
+    <br></br>
+    <br></br>
     <div className="min-h-screen w-full" style={{backgroundImage: "url('/bg.png')" , backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="max-w-7xl mx-auto">
         {/* Title */}
