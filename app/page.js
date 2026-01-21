@@ -28,17 +28,17 @@ export default function Home() {
         />
       </div>
 
-      {/* Register Button Overlay - Positioned absolutely to align with the button in the background image */}
-      <Link
-        href="#"
+      <a
+        href="https://register.bitsquark.in/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="
           absolute z-20
           cursor-pointer
           rounded-lg
           transition-all duration-300
-          hover:bg-cyan-400/20
-          hover:shadow-[0_0_30px_rgba(0,255,255,0.4)]
           active:scale-95
+          rotate-5
           
           /* Mobile positioning */
           bottom-[32%]
@@ -60,13 +60,13 @@ export default function Home() {
           md:h-[7%]
           
           /* Large screens */
-          lg:bottom-[16%]
+          lg:bottom-[20%]
           lg:w-[30%]
           lg:h-[7%]
           
           /* Extra large screens */
-          xl:bottom-[11%]
-          xl:w-[25%]
+          xl:bottom-[8%]
+          xl:w-[28%]
           xl:h-[9%]
         "
         aria-label="Register for Quark 2026"
