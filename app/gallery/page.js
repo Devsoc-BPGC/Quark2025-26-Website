@@ -16,6 +16,7 @@ export default function Gallery() {
 
     return (
         <div className="h-screen">
+            
             <div className="h-screen flex flex-col justify-end">
                 <Image
                     src={'/Gallery.svg'}
