@@ -61,7 +61,7 @@ const Page = () => {
     },
     {
       name: "Kaustubh Phaltankar",
-      role: "Design Head DOSM",
+      role: "Quark Finanace Head DOFAM",
       contact: "+91 9029514563",
       src: "/team/kaustubh1.jpg",
     }
