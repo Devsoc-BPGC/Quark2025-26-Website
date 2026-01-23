@@ -21,7 +21,7 @@ const NavBar = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 lg:px-10 py-3 flex justify-between items-center backdrop-blur-md bg-black/40 border-b border-blue-500/20">
+      <nav className="fixed  top-0 left-0 w-full z-50 px-6 lg:px-10 py-4 flex justify-between items-center backdrop-blur-md bg-black/40 border-b border-blue-500/20">
         {/* Desktop Menu */}
         <ul
           className={`hidden lg:flex gap-7 text-white/80 text-sm ${orbitron.className}`}
@@ -43,9 +43,10 @@ const NavBar = () => {
           href="https://register.bitsquark.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className={`hidden lg:block text-white text-3xl ${orbitron.className}
-          transition-all duration-300 hover:scale-110
-          hover:[filter:drop-shadow(0_0_10px_rgba(56,189,248,1))]`}
+          className="hidden lg:block text-white text-3xl orbitron-bold
+          transition-all duration-300 hover:scale-110 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-400
+                after:transition-all after:duration-300 hover:after:w-full
+          hover:[filter:drop-shadow(0_0_10px_rgba(56,189,248,1))]"
         >
           REGISTER
         </a>
