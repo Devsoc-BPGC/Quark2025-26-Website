@@ -65,12 +65,12 @@ const Page = () => {
       contact: "+91 9029514563",
       src: "/team/kaustubh1.jpg",
     },
-    {
-      name: "Tanya Khathuria",
-      role: "Quark Coordinator Backstage",
-      contact: "+91 7850072511",
-      src: "/team/tanya1.jpg",
-    }
+    // {
+    //   name: "Tanya Khathuria",
+    //   role: "Quark Coordinator Backstage",
+    //   contact: "+91 7850072511",
+    //   src: "/team/tanya1.jpg",
+    // }
   ];
 
   return (
