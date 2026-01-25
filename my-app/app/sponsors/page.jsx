@@ -103,7 +103,7 @@ export default function Sponsors() {
             opacity: darkToLight(thumbTop, 10, 35) / 100,
           }}
         >
-          OUR SPONSORS & MEDIA PARTNERS
+          OUR PAST SPONSORS & MEDIA PARTNERS
         </div>
 
         {list.map((style, i) => {

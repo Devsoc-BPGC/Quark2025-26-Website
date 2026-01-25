@@ -25,7 +25,7 @@ export const metadata = {
   icons: {
     icon: "/favicon.png",
   },
-  description: "Quark 26 - Personal Website of Quark26",
+  description: "Quark 26 - Official Website of Quark26",
 };
 
 export default function RootLayout({ children }) {

@@ -61,7 +61,7 @@ const Page = () => {
     },
     {
       name: "Kaustubh Phaltankar",
-      role: "Quark Finanace Head DOFAM",
+      role: "Quark Finance Head DOFAM",
       contact: "+91 9029514563",
       src: "/team/kaustubh1.jpg",
     }
