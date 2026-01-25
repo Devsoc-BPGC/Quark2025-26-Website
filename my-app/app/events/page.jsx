@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import panelsData from '@/data/panels.json';
+import panelsData from '../../data/panels.json';
 import { Orbitron,Pixelify_Sans } from 'next/font/google';
-import EventModal from '@/components/EventModal';
+import EventModal from '../../components/EventModal';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const pixelify = Pixelify_Sans({ subsets: ['latin'], weight: '400' });
