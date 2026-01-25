@@ -89,7 +89,7 @@ export default function Gallery() {
                     />
                     <div className="h-[85%] relative">
                         <Image
-                            src={'/image 27.svg'}
+                            src={'/image27.svg'}
                             fill
                             alt="character.svg"
                             draggable={false}
@@ -166,7 +166,7 @@ export default function Gallery() {
 
                     <div className="relative h-[45%] mt-6">
                         <Image
-                            src={'/image 27.svg'}
+                            src={'/image27.svg'}
                             fill
                             alt="character.svg"
                             draggable={false}
