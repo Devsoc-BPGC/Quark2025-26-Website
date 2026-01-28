@@ -7,7 +7,7 @@ export default function Home() {
       {/* Desktop Background */}
       <div className="hidden md:block absolute inset-0 w-full h-full">
         <Image
-          src="/home/desktop.png"
+          src="/home/desktop2.png"
           alt="Quark 2026 - Quantum Insurgence"
           fill
           priority
@@ -19,7 +19,7 @@ export default function Home() {
       {/* Mobile Background */}
       <div className="block md:hidden absolute inset-0 w-full h-full">
         <Image
-          src="/home/mobile.png"
+          src="/home/mobile1.png"
           alt="Quark 2026 - Quantum Insurgence"
           fill
           priority
