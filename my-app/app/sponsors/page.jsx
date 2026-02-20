@@ -1,6 +1,7 @@
 "use client";
+import React, { useState, useEffect, useMemo, useCallback, memo } from "react";
 import Image from "next/image";
-import Sponsor, { sponsors, sponsorLinks } from "../components/Sponsor";
+import Sponsor, { sponsors } from "../components/Sponsor";
 import ScrollBar from "../components/ScrollBar";
 import {
   handleWheel,
@@ -13,11 +14,10 @@ import {
   handleTouchEnd,
   darkToLight,
 } from "../components/Functions";
-import { useState, useEffect } from "react";
 import { useMediaQuery } from "../components/useMediaQuery";
 
 export default function Sponsors() {
-  const sponsorLogos = Array.from({ length: 8 });
+  const sponsorLogos = Array.from({ length: 43 });
   const isLargeScreen = useMediaQuery("(min-width: calc(120vh))");
   const [thumbTop, setThumbTop] = useState(10);
 
@@ -25,18 +25,18 @@ export default function Sponsors() {
     { range: [10, 35], translate: [35, 60] },
     { range: [35, 60], translate: [60, 85] },
     { range: [60, 85], translate: [85, 110] },
-    // { range: [85, 110], translate: [110, 135] },
-    // { range: [110, 135], translate: [135, 160] },
-    // { range: [135, 160], translate: [160, 185] },
-    // { range: [160, 185], translate: [185, 210] },
-    // { range: [185, 210], translate: [210, 235] },
-    // { range: [210, 235], translate: [235, 260] },
-    // { range: [235, 260], translate: [260, 285] },
-    // { range: [260, 285], translate: [285, 310] },
-    // { range: [285, 310], translate: [310, 335] },
-    // { range: [310, 335], translate: [335, 360] },
-    // { range: [335, 360], translate: [360, 385] },
-    // { range: [360, 385] },
+    { range: [85, 110], translate: [110, 135] },
+    { range: [110, 135], translate: [135, 160] },
+    { range: [135, 160], translate: [160, 185] },
+    { range: [160, 185], translate: [185, 210] },
+    { range: [185, 210], translate: [210, 235] },
+    { range: [210, 235], translate: [235, 260] },
+    { range: [235, 260], translate: [260, 285] },
+    { range: [260, 285], translate: [285, 310] },
+    { range: [285, 310], translate: [310, 335] },
+    { range: [310, 335], translate: [335, 360] },
+    { range: [335, 360], translate: [360, 385] },
+    { range: [360, 385] },
   ];
 
   // ✅ Compute real scroll end from animation data
@@ -99,11 +99,12 @@ export default function Sponsors() {
               thumbTop,
               10,
               50
-            )}) translateY(${getTranslate(thumbTop, 10, 50)})`,
+            )}) translateY(${getTranslate(thumbTop, 10, 50)}) translateZ(0)`,
             opacity: darkToLight(thumbTop, 10, 35) / 100,
+            willChange: 'transform, opacity',
           }}
         >
-          OUR PAST SPONSORS & MEDIA PARTNERS
+          OUR SPONSORS & MEDIA PARTNERS
         </div>
 
         {list.map((style, i) => {
@@ -128,8 +129,7 @@ export default function Sponsors() {
                   thumbTop,
                   style.range[0] + 10,
                   style.range[1]
-                )}) ${
-                  style.translate
+                )}) ${style.translate
                     ? `translateY(${getTranslate(
                         thumbTop,
                         style.translate[0],
@@ -140,28 +140,32 @@ export default function Sponsors() {
                         style.translate[1]
                       )})`
                     : ""
-                }`,
+                } translateZ(0)`,
                 opacity: currentOpacity,
                 pointerEvents: isBlockVisible ? "auto" : "none",
+                willChange: 'transform, opacity',
               }}
             >
               {isLargeScreen ? (
                 <div className="flex justify-center items-center gap-[2vw]">
                   {blockSponsors.map((_, idx) => {
-                    const sponsorIndex = i * perPage + idx + 1;
+                    const sponsorIndex = i * perPage + idx;
+                    const sponsor = sponsors[sponsorIndex];
+                    if (!sponsor) return null;
                     return (
                       <Sponsor
                         key={`${i}-${idx}`}
                         content={
                           <Image
-                            src={`/spons/${sponsorIndex}.png`}
-                            alt="Sponser"
+                            src={sponsor.image}
+                            alt={sponsor.name}
                             fill
-                            className="object-contain"
+                            className="object-contain p-4"
                           />
                         }
-                        title={sponsors[sponsorIndex - 1]}
-                        link={sponsorLinks[sponsorIndex - 1]}
+                        title={sponsor.name}
+                        slab={sponsor.slab}
+                        link={sponsor.link}
                         isVisible={isBlockVisible}
                       />
                     );
@@ -170,20 +174,23 @@ export default function Sponsors() {
               ) : (
                 <div className="grid grid-cols-2 gap-[2vw]">
                   {blockSponsors.map((_, idx) => {
-                    const sponsorIndex = i * perPage + idx + 1;
+                    const sponsorIndex = i * perPage + idx;
+                    const sponsor = sponsors[sponsorIndex];
+                    if (!sponsor) return null;
                     return (
                       <Sponsor
                         key={`${i}-${idx}`}
                         content={
                           <Image
-                            src={`/spons/${sponsorIndex}.png`}
-                            alt="Sponser"
+                            src={sponsor.image}
+                            alt={sponsor.name}
                             fill
-                            className="object-contain"
+                            className="object-contain p-4"
                           />
                         }
-                        title={sponsors[sponsorIndex - 1]}
-                        link={sponsorLinks[sponsorIndex - 1]}
+                        title={sponsor.name}
+                        slab={sponsor.slab}
+                        link={sponsor.link}
                         isVisible={isBlockVisible}
                       />
                     );

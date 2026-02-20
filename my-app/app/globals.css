@@ -53,6 +53,21 @@ html, body {
   overflow-x: hidden;
 }
 
+/* GPU acceleration for animated elements */
+.sponsor,
+.title,
+.list > div {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize backdrop-blur performance */
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
 /* Custom selection color matching the cyan theme */
 ::selection {
   background: rgba(0, 255, 255, 0.3);

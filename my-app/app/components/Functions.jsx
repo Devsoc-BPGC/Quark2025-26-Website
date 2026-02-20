@@ -1,43 +1,69 @@
 "use client"
 
 let wheelAnimationFrame = null;
+let thumbElement = null;
 const snapPoints = [10, 35, 60, 85, 110, 135, 160, 185, 210, 235, 260, 285, 310, 335, 360, 385];
 
+// Cache the thumb element
+function getThumb() {
+  if (!thumbElement) {
+    thumbElement = document.querySelector(".thumb");
+  }
+  return thumbElement;
+}
+
+// Easing function for smooth animation
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 export function handleWheel(e, setThumbTop) {
-  const thumb = document.querySelector(".thumb");
+  const thumb = getThumb();
   if (!thumb) return;
 
   const currentTop = parseFloat(thumb.style.top || 10);
-  const currentIdx = snapPoints.findIndex(s => s === snapPoints.reduce((prev, curr) =>
-    Math.abs(curr - currentTop) < Math.abs(prev - currentTop) ? curr : prev
-  ));
+  
+  // Find nearest snap point more efficiently
+  let currentIdx = 0;
+  let minDist = Math.abs(snapPoints[0] - currentTop);
+  for (let i = 1; i < snapPoints.length; i++) {
+    const dist = Math.abs(snapPoints[i] - currentTop);
+    if (dist < minDist) {
+      minDist = dist;
+      currentIdx = i;
+    }
+  }
 
   const direction = e.deltaY > 0 ? 1 : -1;
-
-  let nextIdx = currentIdx + direction;
-  if (nextIdx < 0) nextIdx = 0;
-  if (nextIdx >= snapPoints.length) nextIdx = snapPoints.length - 1;
+  let nextIdx = Math.max(0, Math.min(currentIdx + direction, snapPoints.length - 1));
   const target = snapPoints[nextIdx];
 
   if (wheelAnimationFrame) cancelAnimationFrame(wheelAnimationFrame);
 
-  (function animate() {
-    const current = parseFloat(thumb.style.top || 0);
-    const diff = target - current;
-    const step = Math.sign(diff) * Math.min(Math.abs(diff)*0.75, 1);
+  const startTop = currentTop;
+  const distance = target - startTop;
+  const duration = 350; // ms - smooth animation
+  const startTime = performance.now();
 
-    if (Math.abs(diff) < 0.5) {
+  function animate(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeOutCubic(progress);
+    const newTop = startTop + distance * easedProgress;
+
+    thumb.style.top = `${newTop}px`;
+    setThumbTop(newTop); // Update state progressively for animation
+    
+    if (progress < 1) {
+      wheelAnimationFrame = requestAnimationFrame(animate);
+    } else {
       thumb.style.top = `${target}px`;
       setThumbTop(target);
       wheelAnimationFrame = null;
-      return;
     }
+  }
 
-    thumb.style.top = `${current + step}px`;
-    setThumbTop(current + step);
-    wheelAnimationFrame = requestAnimationFrame(animate);
-  })();
-
+  wheelAnimationFrame = requestAnimationFrame(animate);
 }
 
 const MIN_SCALE = 1;
@@ -85,90 +111,126 @@ export function setOpacity(thumbTop, MIN_TOP, MAX_TOP) {
 
 let touchStartY = 0;
 let velocity = 0;
+let lastTouchTime = 0;
 
 export function handleTouchStart(e) {
   touchStartY = e.touches[0].clientY;
+  lastTouchTime = performance.now();
   velocity = 0;
   if (wheelAnimationFrame) cancelAnimationFrame(wheelAnimationFrame);
 }
 
 export function handleTouchMove(e, setThumbTop, thumbTop) {
   if (e.touches.length > 1) return;
-  const thumb = document.querySelector(".thumb");
+  const thumb = getThumb();
   if (!thumb) return;
 
+  const now = performance.now();
   const touchY = e.touches[0].clientY;
   const delta = touchStartY - touchY;
+  const timeDelta = now - lastTouchTime;
+  
   touchStartY = touchY;
-  velocity = delta;
+  lastTouchTime = now;
+  
+  // Calculate velocity (pixels per ms)
+  if (timeDelta > 0) {
+    velocity = delta / timeDelta;
+  }
 
   if (!(thumbTop === snapPoints[0] && delta < 0)) e.preventDefault();
 
-  let target = parseFloat(thumb.style.top || 0) + delta;
-  const currentSnap = snapPoints.reduce((prev, curr) =>
-    Math.abs(curr - parseFloat(thumb.style.top || 0)) < Math.abs(prev - parseFloat(thumb.style.top || 0)) ? curr : prev
-  );
+  // Find current snap point efficiently
+  const currentTop = parseFloat(thumb.style.top || 0);
+  let currentIdx = 0;
+  let minDist = Math.abs(snapPoints[0] - currentTop);
+  for (let i = 1; i < snapPoints.length; i++) {
+    const dist = Math.abs(snapPoints[i] - currentTop);
+    if (dist < minDist) {
+      minDist = dist;
+      currentIdx = i;
+    }
+  }
 
   const direction = delta > 0 ? 1 : -1;
-  const currentIdx = snapPoints.indexOf(currentSnap);
-  let nextIdx = currentIdx + direction;
-  if (nextIdx < 0) nextIdx = 0;
-  if (nextIdx >= snapPoints.length) nextIdx = snapPoints.length - 1;
-  target = snapPoints[nextIdx];
-
-  if (wheelAnimationFrame) cancelAnimationFrame(wheelAnimationFrame);
-
-  (function animate() {
-    const current = parseFloat(thumb.style.top || 0);
-    const diff = target - current;
-    const step = Math.sign(diff) * Math.min(Math.abs(diff), 0.5);
-
-    if (Math.abs(diff) < 0.5) {
-      thumb.style.top = `${target}px`;
-      setThumbTop(target);
-      wheelAnimationFrame = null;
-      return;
-    }
-
-    thumb.style.top = `${current + step}px`;
-    setThumbTop(current + step);
-    wheelAnimationFrame = requestAnimationFrame(animate);
-  })();
-}
-
-export function handleTouchEnd(setThumbTop) {
-  const thumb = document.querySelector(".thumb");
-  if (!thumb) return;
-
-  if (Math.abs(velocity) < 1) return;
-
-  const currentSnap = snapPoints.reduce((prev, curr) =>
-    Math.abs(curr - parseFloat(thumb.style.top || 0)) < Math.abs(prev - parseFloat(thumb.style.top || 0)) ? curr : prev
-  );
-
-  const direction = velocity > 0 ? 1 : -1;
-  const currentIdx = snapPoints.indexOf(currentSnap);
-  let nextIdx = currentIdx + direction;
-  if (nextIdx < 0) nextIdx = 0;
-  if (nextIdx >= snapPoints.length) nextIdx = snapPoints.length - 1;
+  let nextIdx = Math.max(0, Math.min(currentIdx + direction, snapPoints.length - 1));
   const target = snapPoints[nextIdx];
 
   if (wheelAnimationFrame) cancelAnimationFrame(wheelAnimationFrame);
 
-  (function animate() {
-    const current = parseFloat(thumb.style.top || 0);
-    const diff = target - current;
-    const step = Math.sign(diff) * Math.min(Math.abs(diff), 1);
+  const startTop = currentTop;
+  const distance = target - startTop;
+  const duration = 350; // ms - smooth touch animation
+  const startTime = performance.now();
 
-    if (Math.abs(diff) < 0.5) {
+  function animate(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeOutCubic(progress);
+    const newTop = startTop + distance * easedProgress;
+
+    thumb.style.top = `${newTop}px`;
+    setThumbTop(newTop); // Update state progressively for animation
+    
+    if (progress < 1) {
+      wheelAnimationFrame = requestAnimationFrame(animate);
+    } else {
       thumb.style.top = `${target}px`;
       setThumbTop(target);
       wheelAnimationFrame = null;
-      return;
     }
+  }
 
-    thumb.style.top = `${current + step}px`;
-    setThumbTop(current + step);
-    requestAnimationFrame(animate);
-  })();
+  wheelAnimationFrame = requestAnimationFrame(animate);
+}
+
+export function handleTouchEnd(setThumbTop) {
+  const thumb = getThumb();
+  if (!thumb) return;
+
+  // Only trigger momentum if velocity is significant
+  if (Math.abs(velocity) < 0.3) return;
+
+  const currentTop = parseFloat(thumb.style.top || 0);
+  
+  // Find current snap point efficiently
+  let currentIdx = 0;
+  let minDist = Math.abs(snapPoints[0] - currentTop);
+  for (let i = 1; i < snapPoints.length; i++) {
+    const dist = Math.abs(snapPoints[i] - currentTop);
+    if (dist < minDist) {
+      minDist = dist;
+      currentIdx = i;
+    }
+  }
+
+  const direction = velocity > 0 ? 1 : -1;
+  let nextIdx = Math.max(0, Math.min(currentIdx + direction, snapPoints.length - 1));
+  const target = snapPoints[nextIdx];
+
+  if (wheelAnimationFrame) cancelAnimationFrame(wheelAnimationFrame);
+
+  const startTop = currentTop;
+  const distance = target - startTop;
+  const duration = 350; // ms
+  const startTime = performance.now();
+
+  function animate(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeOutCubic(progress);
+    const newTop = startTop + distance * easedProgress;
+
+    thumb.style.top = `${newTop}px`;
+    setThumbTop(newTop); // Update state progressively for animation
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      thumb.style.top = `${target}px`;
+      setThumbTop(target);
+    }
+  }
+
+  requestAnimationFrame(animate);
 }
