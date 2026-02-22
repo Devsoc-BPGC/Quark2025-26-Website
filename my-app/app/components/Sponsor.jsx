@@ -25,7 +25,7 @@ export const sponsors = [
     { name: "RedBus", slab: "Official Bus Travel Partner", link: "https://www.redbus.in/", image: "/spons/redbus.png" },
     { name: "Cheeros", slab: "Associate Munching Partner", link: "https://cheerosindia.com/", image: "/spons/cheeros.png" },
     { name: "BRB", slab: "Popped Snacking Partner", link: "https://www.brbchips.com/", image: "/spons/brbchips.png" },
-    { name: "Nature Day", slab: "Beverage Partner", link: "https://team24.in/", image: "/spons/team24.png" },
+    { name: "Nature Day", slab: "Beverage Partner", link: "https://team24.in/", image: "/spons/koku.png" },
     { name: "Eldersons", slab: "Beverage Partner", link: "https://eldersonsbrews.com/", image: "/spons/eldersons.png" },
     { name: "OnTV", slab: "Transit Media Partner", link: "https://ontv.co.in/", image: "/spons/ontv.png" },
     { name: "IRVPL", slab: "Official Radio Partner", link: "https://indigomusic.com/", image: "/spons/indigomusic.png" },
